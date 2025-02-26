@@ -1,0 +1,27 @@
+.left-container {
+  /* Existing container styles */
+  background-color: #faf9f6;
+  width: 659px;
+  height: 942px;
+  padding: 50px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  overflow-y: auto;
+
+  /* Use Baskerville (with Libre Baskerville fallback from Google Fonts) */
+  font-family: "Libre Baskerville", "Baskerville", serif;
+  color: #333; /* Choose your preferred text color */
+}
+
+/* Target the <pre> element to allow wrapping */
+.left-container pre {
+  white-space: pre-wrap; /* Preserve line breaks but allow wrapping */
+  overflow-wrap: break-word; /* Break long words if needed */
+  word-wrap: break-word; /* Older name for the same property */
+  margin: 0; /* Remove default <pre> margin if desired */
+
+  /* Inherit the container’s font, or override if you prefer */
+  font-family: inherit;
+  font-size: 1rem; /* Adjust font size to your preference */
+  line-height: 1.5;
+}

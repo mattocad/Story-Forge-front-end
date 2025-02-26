@@ -1,0 +1,66 @@
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Main container with dark background emulating the open book layout */
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #191919;
+  width: 100vw;
+  height: 100vh;
+  gap: 60px; /* Space between the left and right containers */
+}
+
+/* Left Container Styles */
+.left-container {
+  background-color: #faf9f6;
+  width: 659px;
+  height: 942px;
+  padding: 50px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  overflow-y: auto;
+}
+
+/* Right Container Styles */
+.right-container {
+  background-color: #faf9f6;
+  width: 659px;
+  height: 942px;
+  padding: 50px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Image Styling */
+.right-container .image {
+  width: 70%;
+  height: auto;
+  max-height: 50%;
+  object-fit: contain;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+/* Button Grid Styling */
+.button-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  width: 80%;
+}
+
+.button-container button {
+  padding: 10px;
+  font-size: 1rem;
+}
