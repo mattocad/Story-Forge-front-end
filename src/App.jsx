@@ -8,13 +8,14 @@ import "./App.css";
 function App() {
   const [screen, setScreen] = useState("title");
   const [mode, setMode] = useState("story"); // default mode
+  const [restartKey, setRestartKey] = useState(0); // key to force remount of GameScreen
+  const [narrative, setNarrative] = useState(""); // store the transcript
 
   const handleStart = () => {
     setScreen("mode");
   };
 
   const handleExit = () => {
-    // For web apps, you might simply alert and/or close the window if permitted
     alert("Thank you for playing!");
     window.close();
   };
@@ -28,6 +29,30 @@ function App() {
     setScreen("game");
   };
 
+  // Button 5: Restart – clear transcript and force GameScreen to remount
+  const handleRestart = () => {
+    setNarrative(""); // Clear the transcript
+    setRestartKey((prev) => prev + 1); // Remount GameScreen to reinitialize the session
+  };
+
+  // Button 7: Settings – return to mode selection screen so the user can change the mode
+  const handleSettings = () => {
+    setScreen("mode");
+  };
+
+  // Button 8: Export – download the current transcript as a text file
+  const handleExport = (transcript) => {
+    const blob = new Blob([transcript], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "chat_transcript.txt";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="app-container">
       {screen === "title" && (
@@ -39,7 +64,17 @@ function App() {
       {screen === "preface" && (
         <PrefaceScreen onContinue={handlePrefaceContinue} />
       )}
-      {screen === "game" && <GameScreen mode={mode} />}
+      {screen === "game" && (
+        <GameScreen
+          key={restartKey} // forces remount on restart
+          mode={mode}
+          narrative={narrative}
+          setNarrative={setNarrative}
+          onRestart={handleRestart}
+          onSettings={handleSettings}
+          onExport={handleExport}
+        />
+      )}
     </div>
   );
 }
