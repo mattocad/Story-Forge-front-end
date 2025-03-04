@@ -1,11 +1,19 @@
-.left-container {
-  /* Existing container styles */
-  background-color: #faf9f6;
+/* New wrapper for the left container */
+.left-container-wrapper {
+  position: relative;
   width: 659px;
   height: 942px;
+  border-radius: 20px;
+  overflow: hidden; /* Ensure the overlay stays within bounds */
+}
+
+/* Your existing left-container now becomes the scrollable area */
+.left-container {
+  background-color: #faf9f6;
+  width: 100%;
+  height: 100%;
   padding: 50px;
   box-sizing: border-box;
-  border-radius: 20px;
   overflow-y: auto;
 
   /* Use Baskerville (with Libre Baskerville fallback from Google Fonts) */
@@ -15,13 +23,41 @@
 
 /* Target the <pre> element to allow wrapping */
 .left-container pre {
-  white-space: pre-wrap; /* Preserve line breaks but allow wrapping */
-  overflow-wrap: break-word; /* Break long words if needed */
-  word-wrap: break-word; /* Older name for the same property */
-  margin: 0; /* Remove default <pre> margin if desired */
-
-  /* Inherit the container’s font, or override if you prefer */
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  margin: 0;
   font-family: inherit;
-  font-size: 1rem; /* Adjust font size to your preference */
+  font-size: 1rem;
   line-height: 1.5;
+}
+
+/* Loading overlay styles */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(198, 198, 198, 0.842); /* overlay colour */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* Spinner styling for the loading icon using an image with rotation animation */
+.spinner {
+  width: 100px;
+  height: 100px;
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

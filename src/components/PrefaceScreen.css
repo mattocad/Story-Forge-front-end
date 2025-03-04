@@ -1,0 +1,23 @@
+.preface-screen {
+  background-color: #faf9f6;
+  width: 1500px;
+  height: 942px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #191919;
+  text-align: center;
+  padding: 300px; /* Note: This overrides any previous padding setting */
+}
+
+.preface-screen h1 {
+  font-size: 250%;
+  font-style: italic;
+}
+
+.preface-screen p {
+  white-space: pre-line;
+}

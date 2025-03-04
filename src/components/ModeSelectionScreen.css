@@ -1,0 +1,50 @@
+.mode-selection-screen {
+  background-color: #faf9f6;
+  width: 1500px;
+  height: 942px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #191919;
+  text-align: center; /* Optional: centers the text */
+  padding: 50px;
+}
+
+.mode-selection-screen h1 {
+  font-size: 250%;
+}
+
+.mode {
+  font-size: 150%;
+}
+
+.mode-description {
+  font-size: 100%;
+  padding-left: 300px;
+  padding-right: 300px;
+}
+
+.mode-selection-screen .mode-image {
+  margin: 20px 0;
+  width: 150px; /* Fixed width for the image container */
+  height: 150px; /* Fixed height for the image container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mode-selection-screen .mode-image img {
+  max-width: 150%;
+  max-height: 100%;
+  object-fit: contain; /* Ensures the image scales to fit the container */
+  border-radius: 10px;
+}
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Adjust gap for desired spacing */
+  margin-top: 20px; /* Optional: space above the buttons */
+}
