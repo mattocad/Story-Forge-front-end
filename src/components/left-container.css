@@ -1,7 +1,7 @@
 /* New wrapper for the left container */
 .left-container-wrapper {
   position: relative;
-  width: 659px;
+  width: 720px;
   height: 942px;
   border-radius: 20px;
   overflow: hidden; /* Ensure the overlay stays within bounds */
@@ -30,6 +30,10 @@
   font-family: inherit;
   font-size: 1rem;
   line-height: 1.5;
+}
+
+.player-turn {
+  color: red;
 }
 
 /* Loading overlay styles */

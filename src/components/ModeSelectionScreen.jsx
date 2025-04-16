@@ -29,7 +29,7 @@ const ModeSelectionScreen = ({ onContinue }) => {
           : "Experience a more dynamic adventure with greater narrative freedom. In this mode, expect a more unpredictable storyline where your choices significantly influence the plot’s direction, inviting you to shape the story in new and unexpected ways."}
       </p>
       <div className="button-group">
-        <button onClick={toggleMode}>Toggle Mode</button>
+        <button onClick={toggleMode}>Switch Mode</button>
         <button onClick={() => onContinue(mode)}>Continue</button>
       </div>
     </div>

@@ -1,23 +1,103 @@
 .preface-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px; /* Space between the two containers */
+  background-color: #191919; /* Matches the main app background */
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.preface-left,
+.preface-right {
   background-color: #faf9f6;
-  width: 1500px;
+  width: 720px;
   height: 942px;
+  padding: 50px;
   box-sizing: border-box;
   border-radius: 20px;
+  color: #191919; /* Set text color to #191919 */
+}
+
+/* Left column styling */
+.preface-left {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  color: #191919;
+  align-items: center;
   text-align: center;
-  padding: 300px; /* Note: This overrides any previous padding setting */
 }
 
-.preface-screen h1 {
-  font-size: 250%;
-  font-style: italic;
+.preface-left .title {
+  font-size: 250%; /* h1 title set to 100% */
+  margin-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  justify-content: center;
 }
 
-.preface-screen p {
+.preface-left .title-image {
+  margin-top: 20px;
+  max-width: 300px; /* Smaller image */
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.preface-left .title-info {
+  text-align: center;
+  color: #191919;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 20px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.preface-left .title-info p {
+  margin: 5px 0;
+}
+
+/* Right column styling remains similar to your previous design */
+.preface-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.preface-right h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.preface-right p {
   white-space: pre-line;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1em;
+}
+
+.button-group {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.button-group button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  color: #ffffff; /* Keep button text white */
+  transition: background-color 0.3s ease;
+}
+
+.button-group button:hover {
+  background-color: #333333;
 }

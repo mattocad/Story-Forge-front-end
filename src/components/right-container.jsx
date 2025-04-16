@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import sampleImage from "../assets/hms-bounty.png";
 import CustomButton from "./CustomButton";
 
@@ -16,14 +16,16 @@ const RightContainer = ({
   onNarrativeUpdate,
   setIsLoading,
   onRestart,
-  onUndo,
   onSettings,
   onExport,
   narrative,
 }) => {
-  // For options 1-4, send commands to your back end as before
-  const sendCommand = async (option) => {
-    setIsLoading(true); // Turn on loading overlay
+  // Function to handle option button clicks
+  const handleOptionClick = async (option) => {
+    // Append player's choice to transcript.
+    // This will mark the turn with "PLAYER:" so that LeftContainer can style it (e.g., in red).
+    onNarrativeUpdate(`PLAYER: Option ${option}`, false);
+    setIsLoading(true);
     try {
       const response = await fetch("http://127.0.0.1:8000/command", {
         method: "POST",
@@ -35,7 +37,24 @@ const RightContainer = ({
     } catch (error) {
       console.error("Error sending command:", error);
     }
-    setIsLoading(false); // Turn off loading overlay
+    setIsLoading(false);
+  };
+
+  // New Undo handler that calls the backend /undo endpoint
+  const handleUndo = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch("http://127.0.0.1:8000/undo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await response.json();
+      // Replace the current narrative with the updated transcript
+      onNarrativeUpdate(data.narrative, true);
+    } catch (error) {
+      console.error("Error undoing turn:", error);
+    }
+    setIsLoading(false);
   };
 
   return (
@@ -45,22 +64,22 @@ const RightContainer = ({
         <CustomButton
           imageSrc={button1}
           altText="Option 1"
-          onClick={() => sendCommand(1)}
+          onClick={() => handleOptionClick(1)}
         />
         <CustomButton
           imageSrc={button2}
           altText="Option 2"
-          onClick={() => sendCommand(2)}
+          onClick={() => handleOptionClick(2)}
         />
         <CustomButton
           imageSrc={button3}
           altText="Option 3"
-          onClick={() => sendCommand(3)}
+          onClick={() => handleOptionClick(3)}
         />
         <CustomButton
           imageSrc={button4}
           altText="Option 4"
-          onClick={() => sendCommand(4)}
+          onClick={() => handleOptionClick(4)}
         />
         {/* Button 5: Restart */}
         <CustomButton
@@ -69,7 +88,7 @@ const RightContainer = ({
           onClick={onRestart}
         />
         {/* Button 6: Undo */}
-        <CustomButton imageSrc={button6} altText="Undo" onClick={onUndo} />
+        <CustomButton imageSrc={button6} altText="Undo" onClick={handleUndo} />
         {/* Button 7: Settings */}
         <CustomButton
           imageSrc={button7}

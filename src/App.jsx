@@ -35,6 +35,12 @@ function App() {
     setRestartKey((prev) => prev + 1); // Remount GameScreen to reinitialize the session
   };
 
+  // Button 6: Undo – handled in RightContainer via the /undo endpoint,
+  // so we define a no-op here.
+  const handleUndo = () => {
+    // Undo is handled inside RightContainer.
+  };
+
   // Button 7: Settings – return to mode selection screen so the user can change the mode
   const handleSettings = () => {
     setScreen("mode");
@@ -71,6 +77,7 @@ function App() {
           narrative={narrative}
           setNarrative={setNarrative}
           onRestart={handleRestart}
+          onUndo={handleUndo}
           onSettings={handleSettings}
           onExport={handleExport}
         />
